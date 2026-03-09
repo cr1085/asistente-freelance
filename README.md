@@ -2,35 +2,11 @@
 
 > Chatbot inteligente para freelancers · Gestiona clientes, proyectos y tareas con IA
 
-<!-- ![Estado](https://img.shields.io/badge/estado-en%20desarrollo-yellow)
-![Licencia](https://img.shields.io/badge/licencia-Apache2.0-green)
-![Versión](https://img.shields.io/badge/versión-1.0.0-blue) -->
-
-
-**Chatbot IA para freelancers** - Gestiona clientes/proyectos/tareas con lenguaje natural
-
-[![Estado](https://img.shields.io/badge/estado-en%20desarrollo-yellow)]
-[![Apache 2.0](https://img.shields.io/badge/licencia-Apache%202.0-green)]
-[![Versión](https://img.shields.io/badge/versión-0.1.0-blue)]
-[![Discord](https://img.shields.io/discord/1234567890?logo=discord)]
-[![Sponsors](https://img.shields.io/github/sponsors/cr1085?logo=github)]
-
-**Demo live**: [cr1085.github.io/asistente-freelance](https://cr1085.github.io/asistente-freelance/frontend/index.html)
-
-## Features
-- ✅ CRUD clientes/proyectos/tareas
-- ✅ Chat IA con comandos `/tarea`, `/cliente`
-- ✅ Historial conversaciones persistente
-- ✅ Multi-proveedor IA (Claude/OpenAI)
-- ✅ Supabase realtime + auth
-- ✅ Vanilla JS (carga instantánea)
-
-## Live en 2 min
-```bash
-1. Fork repo
-2. Settings → Pages → main:/frontend
-3. https://cr1085.github.io/asistente-freelance
-
+![Estado](https://img.shields.io/badge/estado-en%20desarrollo-yellow)
+![Licencia](https://img.shields.io/badge/licencia-Apache%202.0-green)
+![Versión](https://img.shields.io/badge/versión-0.1.0-blue)
+![Discord](https://img.shields.io/discord/1234567890?logo=discord)
+![Sponsors](https://img.shields.io/github/sponsors/cr1085?logo=github)
 
 ---
 
@@ -45,6 +21,8 @@
 - Guardar el historial completo de conversaciones
 - Ejecutar acciones automáticamente (crear una tarea solo diciéndoselo)
 
+**Sin servicios de pago obligatorios.**
+**Demo live**: [cr1085.github.io/asistente-freelance](https://cr1085.github.io/asistente-freelance)
 
 ---
 
@@ -107,13 +85,13 @@ freelance-ai-assistant/
 
 ---
 
-## Instalación rápida (5 minutos)
+## 🚀 Instalación rápida (5 minutos)
 
 ### Opción A: Abrir directo en el navegador
 
 ```bash
 # Clona el repositorio
-git clone https://github.com/cr1085/asistente-freelance.git
+git clone https://github.com/tu-usuario/freelance-ai-assistant.git
 cd freelance-ai-assistant
 
 # Abre index.html en tu navegador
@@ -174,7 +152,20 @@ npx serve frontend -p 8080
    - Proveedor: **Anthropic Claude**
    - API Key: tu key (`sk-ant-...`)
 
->---
+> ⚠ **Nota importante:** Por restricciones CORS, las APIs de IA no pueden ser llamadas directamente desde el navegador en producción. Para un entorno de producción real, necesitas un backend proxy (ver sección "Despliegue avanzado" más abajo).
+
+#### OpenAI GPT
+1. Crea cuenta en [https://platform.openai.com](https://platform.openai.com)
+2. Ve a **API Keys** y genera una nueva key
+3. En la app, configurar:
+   - Proveedor: **OpenAI GPT**
+   - API Key: tu key (`sk-...`)
+
+#### Mock (sin API key)
+Selecciona **Mock** en el proveedor. La IA dará respuestas de ejemplo, útil para desarrollo de UI.
+
+---
+
 ## 🌐 Despliegue
 
 ### GitHub Pages (estático, gratis)
@@ -184,7 +175,7 @@ npx serve frontend -p 8080
 git init
 git add .
 git commit -m "Initial commit"
-git remote add origin https://github.com/cr1085/asistente-freelance.git
+git remote add origin https://github.com/tu-usuario/freelance-ai-assistant.git
 git push -u origin main
 
 # 2. En GitHub, ve a Settings → Pages
@@ -215,7 +206,38 @@ vercel
 
 Para llamadas a la API de IA en producción, necesitas un proxy que oculte tu API key. Opciones:
 
+**Supabase Edge Functions:**
+```typescript
+// supabase/functions/ai-proxy/index.ts
+import { serve } from "https://deno.land/std/http/server.ts"
+
+serve(async (req) => {
+  const { messages, systemPrompt } = await req.json()
+  
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'x-api-key': Deno.env.get('ANTHROPIC_API_KEY'),
+      'anthropic-version': '2023-06-01',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'claude-opus-4-5',
+      max_tokens: 1024,
+      system: systemPrompt,
+      messages,
+    }),
+  })
+  
+  const data = await response.json()
+  return new Response(JSON.stringify(data), {
+    headers: { 'Content-Type': 'application/json' }
+  })
+})
+```
+
 ---
+
 
 ## 🛡️ Seguridad
 
@@ -278,24 +300,11 @@ git commit -m "feat: agrega filtro de tareas por proyecto"
 
 ## 📄 Licencia
 
-Apache License 2.0
-
-Copyright [2026] 3CB Soluciones
-
-Licensed under the Apache License, Version 2.0 (the "License");
+MIT — Usa, modifica y distribuye libremente con atribución.
 
 ---
 
-### Licencia comercial
-
-Si tu empresa desea utilizar este software en un producto propietario o sin publicar modificaciones, puedes solicitar una **licencia comercial** a:
-
-**3CB Soluciones**
-
-Contacto: 3cbsoluciones@gmail.com
----
-
-## Créditos
+## 🙏 Créditos
 
 Construido con:
 - [Supabase](https://supabase.com) — Base de datos y API
