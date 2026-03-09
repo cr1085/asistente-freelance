@@ -346,8 +346,21 @@ git commit -m "feat: agrega filtro de tareas por proyecto"
 
 ## 📄 Licencia
 
-MIT — Usa, modifica y distribuye libremente con atribución.
+Apache License 2.0
 
+Copyright [2026] 3CB Soluciones
+
+Licensed under the Apache License, Version 2.0 (the "License");
+
+---
+
+### Licencia comercial
+
+Si tu empresa desea utilizar este software en un producto propietario o sin publicar modificaciones, puedes solicitar una **licencia comercial** a:
+
+**3CB Soluciones**
+
+Contacto: 3cbsoluciones@gmail.com
 ---
 
 ## 🙏 Créditos
