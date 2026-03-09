@@ -19,7 +19,6 @@
 - Guardar el historial completo de conversaciones
 - Ejecutar acciones automáticamente (crear una tarea solo diciéndoselo)
 
-**Completamente open source. Sin suscripciones. Sin servicios de pago obligatorios.**
 
 ---
 
@@ -88,7 +87,7 @@ freelance-ai-assistant/
 
 ```bash
 # Clona el repositorio
-git clone https://github.com/tu-usuario/freelance-ai-assistant.git
+git clone https://github.com/cr1085/asistente-freelance.git
 cd freelance-ai-assistant
 
 # Abre index.html en tu navegador
