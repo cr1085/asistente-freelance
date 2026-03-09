@@ -206,35 +206,6 @@ vercel
 
 Para llamadas a la API de IA en producción, necesitas un proxy que oculte tu API key. Opciones:
 
-**Supabase Edge Functions:**
-```typescript
-// supabase/functions/ai-proxy/index.ts
-import { serve } from "https://deno.land/std/http/server.ts"
-
-serve(async (req) => {
-  const { messages, systemPrompt } = await req.json()
-  
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'x-api-key': Deno.env.get('ANTHROPIC_API_KEY'),
-      'anthropic-version': '2023-06-01',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'claude-opus-4-5',
-      max_tokens: 1024,
-      system: systemPrompt,
-      messages,
-    }),
-  })
-  
-  const data = await response.json()
-  return new Response(JSON.stringify(data), {
-    headers: { 'Content-Type': 'application/json' }
-  })
-})
-```
 
 ---
 
