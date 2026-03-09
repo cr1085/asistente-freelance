@@ -107,7 +107,7 @@ freelance-ai-assistant/
 
 ---
 
-## 🚀 Instalación rápida (5 minutos)
+## Instalación rápida (5 minutos)
 
 ### Opción A: Abrir directo en el navegador
 
@@ -174,20 +174,7 @@ npx serve frontend -p 8080
    - Proveedor: **Anthropic Claude**
    - API Key: tu key (`sk-ant-...`)
 
-> ⚠ **Nota importante:** Por restricciones CORS, las APIs de IA no pueden ser llamadas directamente desde el navegador en producción. Para un entorno de producción real, necesitas un backend proxy (ver sección "Despliegue avanzado" más abajo).
-
-#### OpenAI GPT
-1. Crea cuenta en [https://platform.openai.com](https://platform.openai.com)
-2. Ve a **API Keys** y genera una nueva key
-3. En la app, configurar:
-   - Proveedor: **OpenAI GPT**
-   - API Key: tu key (`sk-...`)
-
-#### Mock (sin API key)
-Selecciona **Mock** en el proveedor. La IA dará respuestas de ejemplo, útil para desarrollo de UI.
-
----
-
+>---
 ## 🌐 Despliegue
 
 ### GitHub Pages (estático, gratis)
@@ -308,7 +295,7 @@ Si tu empresa desea utilizar este software en un producto propietario o sin publ
 Contacto: 3cbsoluciones@gmail.com
 ---
 
-## 🙏 Créditos
+## Créditos
 
 Construido con:
 - [Supabase](https://supabase.com) — Base de datos y API
